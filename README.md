@@ -8,6 +8,7 @@ Ce dépôt contient une implémentation de l'algorithme d'Optimisation des Mites
 - [Exigences](#exigences)
 - [Licence](#licence)
 - [Expérience](#expérience)
+- [Amélioration](#amélioration)
 
 ## Aperçu
 
@@ -35,3 +36,13 @@ Afin de réaliser une expérience veuillez :
 python test.py
 ```
 Cette commande chargera les paramètres de l'expérience à partir du fichier config.json, exécutera l'algorithme MOMFO avec ces paramètres et affichera l'assignation optimale des tâches parmi les machines virtuelles. Cette assignation peut varier en fonction de l'initialisation des Moths.
+
+## Amélioration
+1) Initialisation Intelligente des Moths
+L'initialisation des Moths peut grandement influencer les performances de l'algorithme. Plutôt que d'utiliser une initialisation aléatoire, envisagez de créer une heuristique intelligente basée sur la nature du problème. Par exemple, vous pourriez assigner initialement les tâches aux machines virtuelles en fonction de leur longueur, du temps d'exécution, ou d'autres caractéristiques pertinentes
+2) Différentes Trajectoires pour les Moths
+Diversifier les trajectoires des Moths peut aider à explorer un espace de recherche plus large. Ajoutez des variations dans la mise à jour de la position en introduisant différentes trajectoires, telles que des mouvements sinusoidaux, linéaires, ou des changements de direction basés sur des heuristiques spécifiques au problème.
+3) Modifier l'attraction des Moths par les flames
+Modifiez la manière dont les Moths sont attirés par les flammes en ajustant des paramètres tels que l'intensité d'attraction, la proximité aux flammes, ou en introduisant des heuristiques spécifiques au problème. Cela peut améliorer la convergence de l'algorithme vers des solutions optimales.
+4) Approche Pareto Optimale
+Si la nature du problème le permet, envisagez d'implémenter une approche Pareto optimale plutôt qu'aggrégée. Utilisez un algorithme multi-objectif comme NSGA-II pour explorer le front Pareto et obtenir des solutions non-dominées offrant un compromis entre différents objectifs.
