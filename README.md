@@ -7,6 +7,7 @@ Ce dépôt contient une implémentation de l'algorithme d'Optimisation des Mites
 - [Aperçu](#aperçu)
 - [Exigences](#exigences)
 - [Licence](#licence)
+- [Expérience](#expérience)
 
 ## Aperçu
 
@@ -24,3 +25,13 @@ Installez les dépendances requises en utilisant :
 
 ```bash
 pip install -r requirements.txt
+```
+
+## Expérience
+Afin de réaliser une expérience veuillez :
+1) Modifiez les paramètres de l'expérience dans le fichier config.json selon vos besoins.
+2) Exécutez le fichier de test test.py en utilisant la commande Python suivante :
+```bash
+python test.py
+```
+Cette commande chargera les paramètres de l'expérience à partir du fichier config.json, exécutera l'algorithme MOMFO avec ces paramètres et affichera l'assignation optimale des tâches parmi les machines virtuelles. Cette assignation peut varier en fonction de l'initialisation des Moths.

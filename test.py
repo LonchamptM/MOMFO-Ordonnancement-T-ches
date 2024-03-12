@@ -1,17 +1,36 @@
 from heuristic import MOMFO_algorithm
+import json
 
-# Paramètres de test
-num_moths = 50        # Nombre de moths dans la population
-num_tasks = 10        # Nombre de tâches à attribuer
-num_vms = 5           # Nombre de machines virtuelles disponibles
-tasks_lengths = [5, 8, 3, 7, 2, 6, 4, 9, 1, 5]  # Liste des longueurs de tâches
-vm_processing_powers =  [10, 8, 12, 9, 11]   # Liste des puissances de traitement des machines virtuelles
-exe_times = [2, 3, 1, 4, 2, 3, 2, 5, 1, 3]      # Liste des temps d'exécution de chaque tâche
-vm_active_powers = [15, 13, 17, 14, 16]   # Liste des consommations actives de chaque machine virtuelle
-vm_idle_powers = [5, 4, 6, 5, 5]      # Liste des consommations au repos de chaque machine virtuelle
-max_iterations = 100  # Nombre maximal d'itérations
-b = 0.1               # Constante pour la forme de la spirale logarithmique
+# Chargement des paramètres à partir du fichier config.json
+with open('config.json', 'r') as f:
+    config = json.load(f)
 
+# Extraction des paramètres
+num_moths = config['num_moths']
+num_tasks = config['num_tasks']
+num_vms = config['num_vms']
+tasks_lengths = config['tasks_lengths']
+vm_processing_powers = config['vm_processing_powers']
+exe_times = config['exe_times']
+vm_active_powers = config['vm_active_powers']
+vm_idle_powers = config['vm_idle_powers']
+max_iterations = config['max_iterations']
+b = config['b']
+
+# Affichage des paramètres de l'expérience
+print("Parametres de l'experience:")
+print(f"Nombre de Moths: {num_moths}")
+print(f"Nombre de taches: {num_tasks}")
+print(f"Nombre de machines virtuelles: {num_vms}")
+print(f"Longueurs des taches: {tasks_lengths}")
+print(f"Puissances de traitement des machines virtuelles: {vm_processing_powers}")
+print(f"Temps d execution des taches: {exe_times}")
+print(f"Consommations actives des machines virtuelles: {vm_active_powers}")
+print(f"Consommations au repos des machines virtuelles: {vm_idle_powers}")
+print(f"Nombre maximal d'iterations: {max_iterations}")
+print(f"Constante pour la forme de la spirale logarithmique (b): {b}\n")
+
+# Appel de l'algorithme avec les paramètres chargés
 best_config = MOMFO_algorithm(num_moths, num_tasks, num_vms, tasks_lengths, vm_processing_powers, exe_times, vm_active_powers, vm_idle_powers, max_iterations, b)
 
-print(best_config.position)
+print("Affichage de l'assignation optimale des taches parmi les VMs", best_config.position)

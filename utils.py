@@ -105,3 +105,22 @@ def update_number_flames(num_moths, iter, max_iterations):
     - int: Le nombre de "flames" à mettre à jour à l'itération actuelle.
     """
     return round(num_moths - (iter * (num_moths - 1)) / max_iterations)
+
+def print_assignment(position, num_vms):
+    """
+    Affiche l'association des taches au machines virtuelles d'une façon plus organisée.
+
+    Parameters:
+    - position (list): Position d'une Moth ou autrement dit l'affectation des machines virtuelles à chaque tâche
+    - num_vms (int): Le nombre total de machines virtuelles à disposition
+    """
+    # Création d'un dictionnaire pour stocker les tâches associées à chaque machine virtuelle
+    assignment_dict = {f"VM{i + 1}": [] for i in range(num_vms)}
+
+    # Remplissage du dictionnaire avec les tâches associées à chaque machine virtuelle
+    for task, vm in enumerate(position, start=1):
+        assignment_dict[f"VM{vm}"].append(f"Tâche {task}")
+
+    # Affichage du résultat
+    for vm, tasks in assignment_dict.items():
+        print(f"{vm}: {', '.join(tasks)}")
